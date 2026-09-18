@@ -1,0 +1,59 @@
+# Protótipo do Sistema de Estacionamento
+
+Protótipo desenvolvido em Python para demonstrar os requisitos RQ01, RQ02 e RQ03.
+
+RQ01 (funcional) — Como sistema de estacionamento, quero identificar vagas ocupadas
+por meio de câmeras com IA que leem placas de veículos, para que a disponibilidade seja
+conhecida em tempo real, seria mais seguro e fácil de realizar a manutenção.
+Justificativa (e-mail): "Alguns alunos disseram que seria ótimo se houvesse um aplicativo
+que mostrasse as vagas disponíveis em tempo real, mas não tenho certeza se isso é
+possível. Talvez sensores? Ou talvez os alunos pudessem reportar as vagas
+manualmente.."
+Critérios de aceitação:
+● Dado que um veículo estaciona em vaga monitorada, quando a câmera processa a
+imagem, então a vaga é marcada "ocupada" em até 5s.
+● Dado que uma vaga fica livre, quando a câmera deixa de detectar o veículo, então a
+vaga é marcada "livre" em até 5s.
+● Dado que a placa está visível e legível, quando o sistema processa a imagem, então
+a placa é reconhecida com taxa de acerto ≥ 90%.
+
+RQ02 (funcional) — Como equipe de segurança, quero que o sistema identifique veículos
+não autorizados comparando a placa lida com uma lista de veículos registrados, para
+reduzir acessos indevidos.
+Justificativa (e-mail): "a equipe de segurança mencionou que gostaria de algo que ajudasse
+a identificar veículos não autorizados, mas isso pode estar fora do escopo por enquanto."
+Critérios de aceitação:
+● Dado que uma placa é lida, quando comparada à lista de autorizados, então o
+sistema retorna "autorizado" ou "não autorizado".
+● Dado que um veículo é classificado como não autorizado, quando isso ocorre, então
+o sistema gera um alerta para a equipe de segurança.
+● Dado que a lista de veículos autorizados é atualizada, quando uma nova leitura é
+feita, então o sistema usa a versão mais recente da lista.
+
+RQ03 (funcional) — Como administrador do estacionamento, quero que o sistema detecte
+veículos não cadastrados como funcionário ocupando vagas reservadas (ex.: próximas à
+biblioteca) e registre a ocorrência, para coibir esse uso indevido.
+Justificativa (e-mail): "Outro problema é que os alunos às vezes estacionam em vagas
+reservadas para funcionários, principalmente perto da biblioteca. Se o sistema pudesse
+ajudar a evitar isso, seria muito útil."
+Critérios de aceitação:
+● Dado que uma vaga está marcada como reservada, quando um veículo não
+cadastrado como funcionário a ocupa, então o sistema registra placa, data e hora da
+ocorrência.
+● Dado que uma ocorrência é registrada, quando isso acontece, então o sistema
+notifica o responsável definido (segurança/administração).
+● Dado um período informado, quando solicitado, então o sistema permite consultar o
+número de ocupações indevidas por vaga reservada.
+
+## Requisitos implementados
+
+- RQ01: detecção de vagas ocupadas/livres e reconhecimento de placas.
+- RQ02: identificação de veículos autorizados e não autorizados.
+- RQ03: identificação e registro de ocupações indevidas em vagas reservadas.
+
+## Execução
+
+Execute o arquivo principal com:
+
+```bash
+python main.py
